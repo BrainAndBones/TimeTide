@@ -1,16 +1,16 @@
 {
-  "name": "Character Creator",
-  "short_name": "CC",
-  "theme_color": "#ffcbe4",
-  "background_color": "#fa99ca",
+  "name": "Time Tide",
+  "short_name": "TT",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "https://brainandbones.github.io/CharacterCreator/",
+  "start_url": "https://brainandbones.github.io/TimeTide/",
   "description": "Personal Project",
   "orientation": "any",
   "icons": [
           {
-              "src": "https://www.dropbox.com/scl/fi/ekzlpb8tge515l1y42wz4/CCstartIcon.png?rlkey=k7oks2nwepnww35x2pql6qubm&raw=1",
+              "src": "https://www.dropbox.com/scl/fi/016gt9yu7q0p1wvb9kw40/TTstartIcon.png?rlkey=dbmmxvn6do8ns0gaeamlm2668&st=lug7xler&raw=1",
               "sizes": "689x689"
           }
       ]
