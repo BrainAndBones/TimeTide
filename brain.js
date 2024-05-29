@@ -1,7 +1,6 @@
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saterday"];
-var month = 4;
-var names = ["Caleb", "Marcus", "Hellmund", "X"];
-var months = ["January","February","March", "April", "May", "June", "July", "August", "September","October", "November", "December" ];
+var names = ["X", "Caleb", "Josh", "Nate"];
+const months = ["January","February","March", "April", "May", "June", "July", "August", "September","October", "November", "December" ];
 var monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 function setFeB(){
     year = new Date().getFullYear();
@@ -17,19 +16,31 @@ function getFirstDay(currentMonth){
     //const dayName = days[dayOfWeek];
     return dayOfWeek;
 }
-function tableCreate() {
+function tableCreate(month) {
     var body = document.getElementsByTagName('body')[0];
-    var tbl = document.createElement('table');
-    tbl.style.width = '100%';
-    tbl.style.height = '75px';
-    tbl.style.textAlign = 'center';
-    tbl.setAttribute('border', '1');
+    var tbl = document.getElementById('theTable');
 
     var tbdy = document.createElement('tbody');
-
+    tbdy.id = "tableBody";
     //Title
     var title = document.createElement('caption');
-    title.innerText = months[month];
+    title.id = "title";
+    var titleDrop = document.createElement('select');
+    titleDrop.id = "monthDrop";
+    titleDrop.addEventListener("change", changeMonth);
+
+    for(var x = 0; x < months.length; x++){
+        var opt = document.createElement("option");
+        opt.value = x;
+        opt.textContent = months[x];
+        if(x == month){
+            opt.selected = true;
+        }
+        titleDrop.appendChild(opt)
+    }
+    //td.appendChild(drop);
+    //title.innerText = months[month];
+    title.appendChild(titleDrop);
     tbl.appendChild(title);
 
     //main table
@@ -54,7 +65,7 @@ function tableCreate() {
                         date = tableMonth > 0 ? date + monthLengths[tableMonth-1] : date + monthLengths[tableMonth+11];
                         tableMonth = tableMonth > 0 ? tableMonth-1: tableMonth+11;
                     }
-                    td.innerText = date; 
+                    td.innerText = `${date}. `; 
 
                     var drop = document.createElement('select');
                     drop.id = `dropDown${tableMonth}${date}`;
@@ -85,6 +96,15 @@ function getValue(date, tableMonth) {
     const value = element.value;
     return value;
 }
+function changeMonth(){
+    const month = document.getElementById('monthDrop').value;
+    const toRemove1 = document.getElementById("tableBody");
+    const toRemove2 = document.getElementById("title");
+    const parentElement = document.getElementById("theTable");
+    parentElement.removeChild(toRemove1);
+    parentElement.removeChild(toRemove2);
+    tableCreate(month);
+}
 function saveSchedule(day, givenMonth){
     try{
         localStorage.setItem(`${months[givenMonth]}scheduleName${day}`, getValue(day, givenMonth));
@@ -102,4 +122,4 @@ function getSchedule(day, givenMonth){
         document.write("Local Storage Error, You are out of luck");
     }
 }
-tableCreate();
+tableCreate(new Date().getMonth());
