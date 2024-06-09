@@ -10,6 +10,20 @@
 </head>
 <body>
     <table id = "theTable"></table>
+    <button id="openSettings">Settings</button>
+    <div class="centered" id="modal">
+		<div id="modalText">
+			<h1 id = "settingsHeading">Settings </h1>
+            <p>
+			<label id = "addLabel" for="addOption">Add Names: </label><br /><br />
+            <input id="addOption"/><button>Save</button><br /><br />
+            <label id = "addLabel" for="removeOption">Delete Names: </label><br /><br />
+            <select id="removeOption"></select>
+			</p>
+            <br />
+			<button id="closeButton">Close</button>
+		</div>
+	</div>
 </body>
 <script src = "brain.js"></script>
 <script>
