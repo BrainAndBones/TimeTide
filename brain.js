@@ -84,6 +84,14 @@ function tableCreate(month) {
                     }
                     td.appendChild(drop);
                 }
+            }
+            if(date > monthLengths[tableMonth]){
+                date = 1;
+                tableMonth++;
+            }
+            if(date < 1){
+                date = tableMonth > 0 ? date + monthLengths[tableMonth-1] : date + monthLengths[tableMonth+11];
+                tableMonth = tableMonth > 0 ? tableMonth-1: tableMonth+11;
             }date++;  
         }
         tbdy.appendChild(tr);
@@ -122,4 +130,43 @@ function getSchedule(day, givenMonth){
         document.write("Local Storage Error, You are out of luck");
     }
 }
+function giveInfo() {
+	modal.style.height = '70%';
+	modal.style.width = '70%';
+	modal.style.visibility = 'visible';
+	modalText.style.display = 'block';
+}
+function takeInfo() {
+	modal.style.height = '0%';
+	modal.style.width = '0%';
+	modal.style.visibility = 'collapse';
+	modalText.style.display = 'none';
+    saveNames();
+    changeMonth();
+}
+function setUpSettings() {
+    var deleteName = document.getElementById("removeOption");
+    for(var x = 0; x < names.length; x++){
+        var opt = document.createElement("option");
+        opt.value = x;
+        opt.textContent = names[x];
+        deleteName.appendChild(opt);
+    }
+    openSettings.addEventListener("click", giveInfo);
+    closeButton.addEventListener("click", takeInfo);
+    openSettings.addEventListener("click", giveInfo);
+}
+function updateSettings() {
+    
+}
+function deleteAName(){
+
+}
+function addAName(){
+
+}
+function saveNames (){
+
+}
+setUpSettings();
 tableCreate(new Date().getMonth());
