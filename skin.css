@@ -22,3 +22,47 @@ select{
     width: 100%;
     text-align: center;
 }
+.centered {
+	left: 0;
+	margin: auto;
+	right: 0;
+	text-align: center;
+	color: white;
+}
+#openSettings{
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    border: 1px solid black;
+}
+#closeButton{
+	background-color: transparent;
+	color: white;
+	border-radius: 20px;
+	border-color: white;
+}
+#modal {
+	background-color: rgba(100, 100, 300, 0.7);
+	border: solid 2vh transparent;
+	border-radius: 2vh;
+	bottom: 0;
+	display: block;
+	height: 0%;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	width: 0%;
+	transition: .2s;
+	z-index: 2;
+}
+
+#modalText {
+	bottom: 0;
+	display: inherit;
+	height: fit-content;
+	margin: inherit;
+	position: absolute;
+	top: 0;
+	visibility: inherit;
+	width: 100%;
+}
